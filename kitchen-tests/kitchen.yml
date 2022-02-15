@@ -97,7 +97,6 @@ platforms:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
       - RUN yum install -y centos-release-scl
-      - RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
       - RUN yum install -y devtoolset-8
 
 - name: almalinux-8
@@ -116,7 +115,6 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
-      - RUN yum install -y centos-release-scl
       - RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
       - RUN yum install -y devtoolset-8
 
