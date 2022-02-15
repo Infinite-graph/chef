@@ -115,7 +115,8 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
-      - RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
+      - RUN yum-config-manager --enable software_collection
+      - RUN yum install -y scl-utils
       - RUN yum install -y devtoolset-8
 
 - name: oraclelinux-8
