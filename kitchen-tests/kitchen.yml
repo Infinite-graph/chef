@@ -96,8 +96,8 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
-      - RUN wget --no-check-certificate -O /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-SCLo
-      - RUN printf "[centos-sclo-rh]\nname=CentOS-7 - SCLo rh\nbaseurl=http://vault.centos.org/centos/7/sclo/x86_64/rh\ngpgcheck=1\nenabled=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo" > /etc/yum.repos.d/CentOS-SCLo-rh.repo
+      - RUN yum install -y centos-release-scl
+      - RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
       - RUN yum install -y devtoolset-8
 
 - name: almalinux-8
@@ -116,8 +116,8 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
-      - RUN wget --no-check-certificate -O /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-SCLo
-      - RUN printf "[centos-sclo-rh]\nname=CentOS-7 - SCLo rh\nbaseurl=http://vault.centos.org/centos/7/sclo/x86_64/rh\ngpgcheck=1\nenabled=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo" > /etc/yum.repos.d/CentOS-SCLo-rh.repo
+      - RUN yum install -y centos-release-scl
+      - RUN yum-config-manager --enable rhel-server-rhscl-7-rpms
       - RUN yum install -y devtoolset-8
 
 - name: oraclelinux-8
