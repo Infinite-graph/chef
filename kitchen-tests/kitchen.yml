@@ -23,11 +23,6 @@ lifecycle:
     - remote: /opt/chef/bin/ohai -v
     - remote: echo "Installing appbundler and appbundle-updater gems:"
     - remote: /opt/chef/embedded/bin/gem install appbundler appbundle-updater --no-doc
-    - remote: echo "Installing devtoolset-8:"
-      includes:
-        - centos-6
-        - centos-7
-        - oraclelinux-7
     - remote: scl enable devtoolset-8 '/opt/chef/embedded/bin/appbundle-updater chef chef <%= ENV['BUILDKITE_COMMIT']  || %x(git rev-parse HEAD).chomp %> --tarball --github <%= ENV['GITHUB_REPOSITORY']  || "chef/chef" %>'
       includes:
         - centos-6
@@ -115,6 +110,7 @@ platforms:
     intermediate_instructions:
       - RUN yum -y install e2fsprogs
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
+      - RUN yum install -y oraclelinux-release-el7
       - RUN yum-config-manager --enable software_collection
       - RUN yum-config-manager --enable ol7_latest ol7_optional_latest
       - RUN yum install -y scl-utils
