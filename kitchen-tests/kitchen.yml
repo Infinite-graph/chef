@@ -82,7 +82,7 @@ platforms:
       - RUN sed -i -e "s/Defaults.*requiretty.*/Defaults    !requiretty/g" /etc/sudoers
       - RUN wget --no-check-certificate -O /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo https://www.centos.org/keys/RPM-GPG-KEY-CentOS-SIG-SCLo
       - RUN printf "[centos-sclo-rh]\nname=CentOS-6 - SCLo rh\nbaseurl=https://archive.kernel.org/centos-vault/6.9/sclo/x86_64/rh/\ngpgcheck=1\nenabled=1\ngpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo" > /etc/yum.repos.d/CentOS-SCLo-rh.repo
-      - RUN yum install -y devtoolset-7
+      - RUN yum install -y devtoolset-7.x86_64
 
 - name: centos-7
   driver:
